@@ -4,14 +4,11 @@ import argparse
 
 class Launcher(object):
     
-    def __init__(self, name, icon, bin_file, file_name):
+    def __init__(self, tupla):
         """
         Constructor
         """
-        self.name      = name
-        self.icon      = icon
-        self.bin_file   = bin_file
-        self.file_name  = file_name
+        self.name, self.icon, self.bin_file, self.file_name = tupla
                 
     def create_file(self):
         """
@@ -71,11 +68,7 @@ if __name__ == '__main__':
                         help = 'File file_name.desktop to create')
 
     args = parser.parse_args()
+    tupla = args.name, args.icon, args.bin, args.file
 
-    name = args.name
-    icon = args.icon
-    bin_file = args.bin
-    file_name = args.file
-
-    l = Launcher(name, icon, bin_file, file_name)
+    l = Launcher(tupla)
     l.create_file()
